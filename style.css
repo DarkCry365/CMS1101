@@ -1,0 +1,254 @@
+.container.landing {
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+}
+
+.landing .circle {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transition: var(--t3s);
+    position: absolute;
+}
+
+.landing #circle-1 {
+    background-color: var(--secondary-color);
+    width: 160px;
+    height: 160px;
+    transform: translate(-50%, 50%);
+    bottom: 85%;
+    left:25%;
+    z-index: -2;
+}
+
+.landing #circle-2 {
+    --_circle-diameter: 350px;
+    background-color: var(--accent-color);
+    width: var(--_circle-diameter);
+    height: var(--_circle-diameter);
+    transform: translate(-50%, -50%);
+    top: 42%;
+    left: calc(100% - var(--_circle-diameter) / 1.45);
+    z-index: -2;
+}
+
+.landing #circle-3 {
+    background-color: var(--secondary-color);
+    width: 550px;
+    height: 550px;
+    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 70%;
+    z-index: -2;
+}
+
+.landing #circle-4 {
+    background-color: var(--secondary-color);
+    width: 300px;
+    height: 300px;
+    transform: translate(50%, -50%);
+    top: 97%;
+    right: 95%;
+    z-index: -2;
+}
+
+.landing #circle-load {
+    background-color: var(--secondary-color);
+    width: 0px;
+    height: 0px;
+    transform: translate(50%, 50%);
+    right: 100%;
+    bottom: 100%;
+    z-index: 1;
+}
+
+.landing>.contents {
+    --_margin: 30px;
+    margin: var(--_margin);
+    height: calc(100% - var(--_margin) * 2);
+    display: flex;
+    flex-direction: column;
+}
+
+.landing .contents>.logo-container {
+    height: max-content;
+}
+
+.landing .contents .logo-container .green { 
+    color: green;
+    font-weight: light;
+}
+
+.landing .contents .logo-container .white {
+    color: white;
+    font-weight: light;
+    -webkit-text-stroke: .5px black;
+}
+
+.landing .contents .logo-container .red {
+    color: red;
+    font-weight: light;
+}
+
+/* .landing .contents .logo-container .container-obm {
+    background-color: rgb(8, 10, 18);
+    border-radius: 20px;
+    padding: 5px 9px;
+    font-weight: light;
+} */
+
+.landing .container.landing-action {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing .landing-action .text-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing .text-details .title {
+    background-image: radial-gradient(circle at center left, var(--_lc), var(--_rc));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-stack-title);
+    font-size: 6rem;
+    padding: 0 9px;
+    transition:
+    --_lc var(--t3s),
+    --_rc var(--t3s);
+    position: relative;
+}
+
+.landing .text-details .title::before {
+    content: "OBM Furniture Trading";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    -webkit-text-stroke: 4px black;
+    color: black;
+    z-index: -1;
+
+}
+
+.landing .text-details .desc {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: -10px;
+    width: 600px;
+}
+
+.landing .landing-action .action-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing .action-container #register {
+    background-image: radial-gradient(circle at center left, var(--_lc), var(--_rc));
+    border: 0;
+    border-radius: 30px;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 13px 27px;
+    transition:
+        var(--t3s),
+        --_lc var(--t3s),
+        --_rc var(--t3s);
+}
+
+.landing .action-container :is(#register:hover, #register.active) {
+    --_lc: #2c4b2a;
+    --_rc: #7b0d0d;
+}
+
+
+.landing .action-container #register.pressed {
+    transform: scale(0.90);
+}
+
+.landing:has(.action-container #register:hover) .text-details .title, .landing .text-details .title.active {
+    --_lc: #2c4b2a;
+    --_rc: #7b0d0d;
+}
+
+.landing:has(.action-container #register:hover) #circle-1, .landing #circle-1.active {
+    background-color: var(--accent-color);
+    width: 250px;
+    height: 250px;
+}
+
+.landing:has(.action-container #register:hover) #circle-2, .landing #circle-2.active {
+    background-color: var(--secondary-color);
+    --_circle-diameter: 450px;
+}
+
+.landing:has(.action-container #register:hover) #circle-3, .landing #circle-3.active {
+    background-color: var(--accent-color);
+    width: 650px;
+    height: 650px;
+}
+
+.landing:has(.action-container #register:hover) #circle-4, .landing #circle-4.active {
+    background-color: var(--accent-color);
+    width: 400px;
+    height: 400px;
+}
+
+.landing:has(.action-container #register:hover) #circle-load {
+    width: 50px;
+    height: 50px;
+}
+
+@property --_lc {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #7b0d0d;
+}
+
+@property --_rc {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #2c4b2a;
+}
+
+.landing .action-container .login-option {
+    font-size: 0.85rem;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing .login-option #login {
+    background-color: transparent;
+    border: 0;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-family: var(--font-stack-normal);
+    font-size: 0.85rem;
+    padding: 0;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.landing .login-option #login:hover {
+    color: var(--alt-color);
+}
+
+.landing .login-option #login.active {
+    color: var(--accent-color);
+}
